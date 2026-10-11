@@ -1,0 +1,13 @@
+{
+  "tone": "elegant",
+  "fontBody": "Inter",
+  "logoText": "Umbral Arquitectura",
+  "textColor": "#24211E",
+  "accentColor": "#9C4934",
+  "fontHeading": "Cormorant Garamond",
+  "borderRadius": "0.5rem",
+  "logoImageUrl": "https://vabacntbfcwhgkjqajcw.supabase.co/storage/v1/object/public/screenshots/projects/P-L8896P/logo.png",
+  "primaryColor": "#F5F0E7",
+  "secondaryColor": "#D7CEC2",
+  "backgroundColor": "#F5F0E7"
+}
