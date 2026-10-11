@@ -58,14 +58,14 @@ export function Navigation() {
           >
             <span className="flex flex-col">
               <span className="editorial text-[39px] leading-[.9]">Umbral</span>
-              <span className="mt-1.5 text-[7px] tracking-[.29em] uppercase">
+              <span className="mt-1.5 text-xs tracking-[.29em] uppercase">
                 Arquitectura
               </span>
             </span>
           </Link>
           <nav
             aria-label="Navegación principal"
-            className="hidden md:flex items-center gap-8 text-[11px]"
+            className="hidden md:flex items-center gap-4 lg:gap-8 text-sm"
           >
             {links.map(([label, url]) => (
               <a
@@ -79,7 +79,7 @@ export function Navigation() {
           </nav>
           <a
             href="#consulta"
-            className="hidden md:flex min-h-11 items-center gap-6 bg-accent text-background px-5 text-[11px] hover:bg-foreground transition-colors"
+            className="hidden md:flex min-h-11 items-center gap-6 bg-accent text-background px-5 text-sm hover:bg-foreground transition-colors"
           >
             Hablemos
             <ArrowUpRight size={15} />

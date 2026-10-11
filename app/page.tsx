@@ -234,14 +234,14 @@ export default async function Home({
                   <span className="editorial text-4xl text-accent">
                     0{i + 1}
                   </span>
-                  <h3 className="text-xs font-medium mt-6 mb-3">{s.title}</h3>
-                  <p className="text-[11px] leading-6 text-muted max-w-[230px]">
+                  <h3 className="text-base font-medium mt-6 mb-3">{s.title}</h3>
+                  <p className="text-base leading-6 text-muted max-w-[32ch]">
                     {s.text}
                   </p>
                 </li>
               ))}
             </ol>
-            <p className="text-[9px] text-muted mt-8">
+            <p className="text-xs text-muted mt-8">
               Proceso ilustrativo de esta demostración. No constituye una oferta
               de ejecución de obra.
             </p>
@@ -258,7 +258,7 @@ export default async function Home({
                 <br />
                 <em>otra dimensión.</em>
               </h2>
-              <p className="text-xs leading-6 text-[#d7cec2] mt-6 max-w-[280px]">
+              <p className="text-base leading-7 text-[#d7cec2] mt-6 max-w-[280px]">
                 Una pausa para observar. Una exploración visual de nuestro
                 universo conceptual que acompaña tu recorrido.
               </p>
@@ -281,13 +281,13 @@ export default async function Home({
               <br />
               <em className="text-accent">una idea.</em>
             </h2>
-            <p className="text-xs text-muted leading-7 mt-7 max-w-[300px]">
+            <p className="text-base text-muted leading-7 mt-7 max-w-[300px]">
               ¿Qué te gustaría imaginar? Comparte tu idea y prueba el formulario
               de esta demostración.
             </p>
             <div className="flex items-start gap-3 mt-9 max-w-[330px] border-t border-line pt-5">
               <MoveUpRight size={17} className="shrink-0 text-accent" />
-              <p className="text-[10px] text-muted leading-5">
+              <p className="text-xs text-muted leading-5">
                 Umbral Arquitectura es un estudio ficticio. No introduzcas datos
                 sensibles ni información de un proyecto real.
               </p>
@@ -303,7 +303,7 @@ export default async function Home({
           <div className="flex flex-col sm:flex-row justify-between gap-8 items-start">
             <Link href="/" className="editorial text-5xl">
               umbral
-              <span className="block font-sans text-[8px] uppercase tracking-[.26em] mt-2">
+              <span className="block font-sans text-xs uppercase tracking-[.26em] mt-2">
                 Arquitectura
               </span>
             </Link>
@@ -313,13 +313,13 @@ export default async function Home({
             </p>
             <a
               href="#contenido"
-              className="flex items-center gap-8 min-h-11 text-[11px]"
+              className="flex items-center gap-8 min-h-11 text-sm"
             >
               Volver arriba
               <ArrowUpRight size={17} />
             </a>
           </div>
-          <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row justify-between gap-4 text-[9px] text-[#d7cec2]">
+          <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row justify-between gap-4 text-xs text-[#d7cec2]">
             <p>
               © {new Date().getFullYear()} Umbral Arquitectura · Estudio
               ficticio. Sitio de demostración.

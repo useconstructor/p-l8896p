@@ -129,9 +129,6 @@ export function initialize() {
           "INSERT INTO initialization VALUES ('concept-gallery-v2')",
         );
       }
-      await tx.execute(
-        "DELETE FROM inquiries WHERE created_at < strftime('%Y-%m-%dT%H:%M:%fZ','now','-30 days')",
-      );
       await tx.commit();
     } catch (e) {
       await tx.rollback();

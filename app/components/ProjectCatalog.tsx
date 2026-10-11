@@ -141,7 +141,7 @@ export function ProjectCatalog({
                 para una vida real.
               </h2>
             </div>
-            <p className="hidden md:block text-[11px] text-muted leading-6 max-w-[230px] pt-8">
+            <p className="hidden md:block text-base text-muted leading-6 max-w-[230px] pt-8">
               Una selección de propuestas ficticias.
               <br />
               Ideas que exploran la relación entre
@@ -158,7 +158,7 @@ export function ProjectCatalog({
                 key={c}
                 onClick={() => filter(c)}
                 aria-pressed={category === c}
-                className={`min-h-12 text-[11px] border-b -mb-px ${category === c ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"}`}
+                className={`min-h-12 text-sm border-b -mb-px ${category === c ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"}`}
               >
                 {c}
                 {category === c && (
@@ -172,13 +172,13 @@ export function ProjectCatalog({
             {loading ? "Cargando proyectos." : ""}
           </p>
           {loading ? (
-            <div className="min-h-72 flex items-center justify-center gap-3 text-muted text-sm">
+            <div className="min-h-72 flex items-center justify-center gap-3 text-muted text-base">
               <LoaderCircle className="animate-spin" size={19} />
               Cargando proyectos…
             </div>
           ) : error ? (
             <div role="alert" className="py-14 border border-line text-center">
-              <p className="text-sm">
+              <p className="text-base">
                 No se pueden cargar los proyectos en este momento.
               </p>
               <button
@@ -220,7 +220,7 @@ export function ProjectCatalog({
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.035] group-focus-visible:scale-[1.035]"
                     />
                     <div className="absolute inset-3 border border-white/0 group-hover:border-white/50 group-focus-visible:border-white/50" />
-                    <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-[8px] tracking-[.1em] uppercase">
+                    <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-xs tracking-[.1em] uppercase">
                       Propuesta ficticia
                     </span>
                     <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/95">
@@ -231,8 +231,8 @@ export function ProjectCatalog({
                     <h3 className="editorial text-[25px] group-hover:text-accent group-focus-visible:text-accent">
                       {p.title}
                     </h3>
-                    <p className="text-[10px] text-muted mt-1">{p.category}</p>
-                    <span className="flex items-center gap-3 text-[11px] text-accent mt-4">
+                    <p className="text-xs text-muted mt-1">{p.category}</p>
+                    <span className="flex items-center gap-3 text-sm text-accent mt-4">
                       Ver proyecto <ArrowRight size={14} />
                     </span>
                   </div>
@@ -241,7 +241,7 @@ export function ProjectCatalog({
             </div>
           )}
           <div className="mt-12 flex justify-between border-t border-line pt-4">
-            <p className="text-[9px] text-muted">
+            <p className="text-xs text-muted">
               Imágenes de referencia. Ninguna propuesta representa una obra
               construida.
             </p>
@@ -350,19 +350,19 @@ export function ProjectCatalog({
                   <h4 className="eyebrow mb-4">Concepto espacial</h4>
                   <Dialog.Description
                     id="project-description"
-                    className="text-sm text-muted leading-7"
+                    className="text-base text-muted leading-7"
                   >
                     {selected.description}
                   </Dialog.Description>
                   <h4 className="eyebrow mt-9 mb-4">Materialidad propuesta</h4>
-                  <ul className="text-sm text-muted space-y-3">
+                  <ul className="text-base text-muted space-y-3">
                     {selected.materials.map((m) => (
                       <li key={m} className="border-b border-line pb-3">
                         {m}
                       </li>
                     ))}
                   </ul>
-                  <p className="text-[10px] text-muted leading-5 mt-7">
+                  <p className="text-xs text-muted leading-5 mt-7">
                     Las fotografías son referencias visuales y no documentan la
                     ejecución de esta propuesta.
                   </p>
@@ -393,7 +393,7 @@ export function ProjectCatalog({
                 </Dialog.Title>
                 <Dialog.Description
                   id="project-description"
-                  className="text-sm text-muted"
+                  className="text-base text-muted"
                 >
                   No encontramos una propuesta con este enlace. Puedes cerrar la
                   ficha y explorar el catálogo.

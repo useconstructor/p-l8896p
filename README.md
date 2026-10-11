@@ -7,7 +7,7 @@ Spanish editorial website for an explicitly fictional residential architecture s
 `npm install`, `npm run build`, `npm run start`.
 Configure `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` on the server. No credentials are sent to the browser. Without these variables, the workspace uses a persistent local libSQL file (`umbral.local.db`) for development and testing; it is ignored by git and is not suitable for deployment persistence. Set `NEXT_PUBLIC_SITE_URL` for production social metadata.
 
-Projects are seeded atomically once using a persistent initialization marker. Seeds are explicitly fictional proposals; photographs are visual references, not documentation of the proposals. The database stores project metadata and enquiry records. Enquiries have server validation, a honeypot, transactional idempotency and a limit of five saved enquiries per connection per hour. Retention cleanup removes records older than 30 days on initialization and submissions, rather than on a timer. No enquiry read endpoint or email delivery is provided.
+Projects are seeded atomically once using a persistent initialization marker. Seeds are explicitly fictional proposals; photographs are visual references, not documentation of the proposals. The database stores project metadata and enquiry records. Enquiries have server validation, a honeypot, transactional idempotency and a limit of five saved enquiries per connection per hour. No automatic inquiry deletion or retention period is configured. No enquiry read endpoint or email delivery is provided.
 
 `npm run lint` and `npx playwright test` verify the application against a production server. Tests query persisted enquiries on the server and remove their own test records. See QA.md for results and limitations.
 

@@ -12,7 +12,7 @@ export default function Privacy() {
       </Link>
       <p className="eyebrow text-accent mt-16 mb-6">Sitio de demostración</p>
       <h1 className="editorial text-6xl mb-10">Privacidad y datos</h1>
-      <div className="space-y-8 text-sm leading-7 text-muted">
+      <div className="space-y-8 text-base leading-7 text-muted">
         <p>
           Umbral Arquitectura es un estudio ficticio. El formulario permite
           probar una consulta con almacenamiento real; no solicita servicios
@@ -44,12 +44,10 @@ export default function Privacy() {
             Conservación configurada
           </h2>
           <p>
-            Se ha configurado la eliminación de consultas con más de 30 días al
-            inicializar la aplicación y antes de procesar una nueva consulta. La
-            eliminación no ocurre mediante un temporizador: si el sitio
-            permanece inactivo, los registros pueden conservarse hasta el
-            siguiente procesamiento. No se ha configurado un plazo independiente
-            para las copias de seguridad del proveedor.
+            No se ha configurado una eliminación automática de las consultas.
+            Los registros permanecen almacenados sin un plazo de eliminación
+            configurado en esta aplicación. No se ha configurado un plazo
+            independiente para las copias de seguridad del proveedor.
           </p>
         </section>
         <section>

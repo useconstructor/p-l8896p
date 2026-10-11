@@ -40,9 +40,6 @@ export async function saveInquiry(input: {
     const fingerprint = hash(JSON.stringify(data));
     const tx = await db.transaction("write");
     try {
-      await tx.execute(
-        "DELETE FROM inquiries WHERE created_at < strftime('%Y-%m-%dT%H:%M:%fZ','now','-30 days')",
-      );
       const duplicate = await tx.execute({
         sql: "SELECT id, fingerprint FROM inquiries WHERE request_key=? OR (fingerprint=? AND created_at > strftime('%Y-%m-%dT%H:%M:%fZ','now','-10 minutes')) LIMIT 1",
         args: [input.requestKey, fingerprint],

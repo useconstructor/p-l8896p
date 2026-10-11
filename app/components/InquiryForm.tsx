@@ -60,7 +60,7 @@ export function InquiryForm() {
       <div role="status" className="border-t border-line py-12">
         <Check size={32} className="text-accent mb-6" />
         <h3 className="editorial text-4xl mb-4">Tu idea ya tiene un lugar.</h3>
-        <p className="text-sm leading-7 text-muted">
+        <p className="text-base leading-7 text-muted">
           La consulta se ha guardado en esta demostración. No se ha enviado un
           correo ni se garantiza una respuesta.
         </p>
@@ -82,7 +82,7 @@ export function InquiryForm() {
       {error && (
         <p
           role="alert"
-          className="text-sm text-accent border border-accent p-3"
+          className="text-base text-accent border border-accent p-3"
         >
           {error}
         </p>
@@ -90,7 +90,7 @@ export function InquiryForm() {
       <div className="grid sm:grid-cols-2 gap-6">
         {(["name", "email"] as const).map((field) => (
           <div key={field}>
-            <label htmlFor={field} className="block text-[11px] mb-3">
+            <label htmlFor={field} className="block text-xs mb-3">
               {field === "name" ? "Tu nombre" : "Correo electrónico"}{" "}
               <span className="text-accent">*</span>
             </label>
@@ -108,7 +108,7 @@ export function InquiryForm() {
               disabled={busy}
               aria-invalid={!!errors[field]}
               aria-describedby={errors[field] ? `${field}-error` : undefined}
-              className="rounded-none border-0 border-b border-line bg-transparent shadow-none h-12 px-0 text-sm focus-visible:ring-0"
+              className="rounded-none border-0 border-b border-line bg-transparent shadow-none h-12 px-0 text-base focus-visible:ring-0"
             />
             {errors[field] && (
               <p id={`${field}-error`} className="text-xs text-accent mt-2">
@@ -119,7 +119,7 @@ export function InquiryForm() {
         ))}
       </div>
       <div>
-        <label htmlFor="message" className="block text-[11px] mb-3">
+        <label htmlFor="message" className="block text-xs mb-3">
           Cuéntanos tu idea <span className="text-accent">*</span>
         </label>
         <Textarea
@@ -133,14 +133,14 @@ export function InquiryForm() {
           disabled={busy}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : "message-hint"}
-          className="rounded-none border-0 border-b border-line bg-transparent shadow-none px-0 resize-y text-sm focus-visible:ring-0 min-h-28"
+          className="rounded-none border-0 border-b border-line bg-transparent shadow-none px-0 resize-y text-base focus-visible:ring-0 min-h-28"
         />
         {errors.message ? (
           <p id="message-error" className="text-xs text-accent mt-2">
             {errors.message[0]}
           </p>
         ) : (
-          <p id="message-hint" className="text-[10px] text-muted mt-2">
+          <p id="message-hint" className="text-xs text-muted mt-2">
             Entre 20 y 5000 caracteres.
           </p>
         )}
@@ -156,9 +156,9 @@ export function InquiryForm() {
           onChange={(e) => setValues({ ...values, website: e.target.value })}
         />
       </div>
-      <p className="text-[10px] text-muted leading-5">
-        Formulario de demostración. Guardamos tu nombre, correo y mensaje
-        durante un máximo operativo de 30 días. Evita información sensible.{" "}
+      <p className="text-xs text-muted leading-5">
+        Formulario de demostración. Guardamos tu nombre, correo y mensaje.
+        No se ha configurado una eliminación automática de las consultas. Evita información sensible.{" "}
         <Link href="/privacidad" className="underline underline-offset-4">
           Ver privacidad
         </Link>
@@ -167,7 +167,7 @@ export function InquiryForm() {
       <button
         type="submit"
         disabled={busy}
-        className="flex justify-between items-center gap-10 bg-accent text-background px-6 py-4 text-xs min-h-12 hover:bg-foreground disabled:opacity-60 transition-opacity w-full sm:w-auto"
+        className="flex justify-between items-center gap-10 bg-accent text-background px-6 py-4 text-sm min-h-12 hover:bg-foreground disabled:opacity-60 transition-opacity w-full sm:w-auto"
       >
         {busy ? "Guardando…" : "Enviar consulta"}
         {busy ? (
