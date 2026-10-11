@@ -179,7 +179,7 @@ export default async function Home({
                 src="/media/editorial-patio.jpg"
                 alt="Referencia de un comedor abierto al exterior"
                 fill
-                sizes="(max-width: 767px) 45vw, 22vw"
+                sizes="(max-width: 639px) 90vw, (max-width: 767px) 45vw, 22vw"
                 className="object-cover"
               />
             </figure>
@@ -199,7 +199,7 @@ export default async function Home({
                 src="/media/editorial-interior.jpg"
                 alt="Referencia de un salón con vigas de madera abierto al jardín"
                 fill
-                sizes="(max-width: 767px) 45vw, 32vw"
+                sizes="(max-width: 639px) 90vw, (max-width: 767px) 45vw, 32vw"
                 className="object-cover"
               />
             </figure>
@@ -241,7 +241,7 @@ export default async function Home({
                 </li>
               ))}
             </ol>
-            <p className="text-xs text-muted mt-8">
+            <p className="text-sm text-muted mt-8">
               Proceso ilustrativo de esta demostración. No constituye una oferta
               de ejecución de obra.
             </p>
@@ -287,7 +287,7 @@ export default async function Home({
             </p>
             <div className="flex items-start gap-3 mt-9 max-w-[330px] border-t border-line pt-5">
               <MoveUpRight size={17} className="shrink-0 text-accent" />
-              <p className="text-xs text-muted leading-5">
+              <p className="text-sm text-muted leading-5">
                 Umbral Arquitectura es un estudio ficticio. No introduzcas datos
                 sensibles ni información de un proyecto real.
               </p>
@@ -303,7 +303,7 @@ export default async function Home({
           <div className="flex flex-col sm:flex-row justify-between gap-8 items-start">
             <Link href="/" className="editorial text-5xl">
               umbral
-              <span className="block font-sans text-xs uppercase tracking-[.26em] mt-2">
+              <span className="block font-sans text-sm uppercase tracking-[.26em] mt-2">
                 Arquitectura
               </span>
             </Link>
@@ -319,7 +319,7 @@ export default async function Home({
               <ArrowUpRight size={17} />
             </a>
           </div>
-          <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row justify-between gap-4 text-xs text-[#d7cec2]">
+          <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row justify-between gap-4 text-sm text-[#d7cec2]">
             <p>
               © {new Date().getFullYear()} Umbral Arquitectura · Estudio
               ficticio. Sitio de demostración.

@@ -62,7 +62,7 @@
   letter-spacing: -0.045em;
 }
 @utility eyebrow {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 600;
@@ -104,7 +104,7 @@
   --background: #f5f2eb;
   --foreground: #27251f;
   --accent: #94472f;
-  --muted: #706c63;
+  --muted: #625e55;
   --surface: #ece5d9;
   --line: #cec6b8;
 }
@@ -116,7 +116,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 14px;
 }
 .section-label::before {
   content: "";
@@ -171,14 +171,14 @@
   justify-content: space-between;
   gap: 12px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 .hero-caption > div {
   border-left: 1px solid var(--line);
   padding-left: 14px;
 }
 .hero-caption .eyebrow {
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.06em;
 }
 .hero-caption .editorial {
@@ -199,7 +199,7 @@
   color: white;
   background: rgb(0 0 0 / 0.5);
   padding: 6px 9px;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.08em;
 }
 .hero-down {
@@ -556,5 +556,39 @@
 @media (max-width: 1023px) {
   .service-image-four {
     display: none;
+  }
+}
+
+/* Let service content flow naturally on phones; keep larger compositions. */
+@media (max-width: 639px) {
+  .services-bento {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 16px;
+  }
+  .services-bento > * {
+    grid-column: auto;
+    grid-row: auto;
+    min-width: 0;
+  }
+  .services-intro {
+    padding-right: 0;
+    padding-bottom: 8px;
+  }
+  .service-tile {
+    width: 100%;
+    padding: 24px;
+  }
+  .service-image {
+    aspect-ratio: 4 / 3;
+  }
+  .category-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+  }
+  .category-filters button {
+    padding: 8px 4px;
   }
 }

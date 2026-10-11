@@ -21,3 +21,11 @@ No business address, staff, award, review, price, founding date or real contact 
 ## Focused readability and conservation verification
 
 The polish build and lint passed, followed by all seven existing Playwright acceptance tests against isolated local SQLite. Computed typography checks at 1440, 768 and 390 confirm descriptive text and inputs at 16px and no visible text below 12px, no horizontal overflow or clipped service tiles, and the hero caption contained inside its photo. Desktop, tablet and mobile screenshots were visually reviewed. Additional checks verified modal description typography, privacy-page overflow, reduced-motion static canvas and disabled transitions, and preservation of a 2020 inquiry through a server restart and a new submission. Only labelled test records in the isolated test database were removed. Detailed notes are saved at `/tmp/quality-notes.json`.
+
+## Focused mobile services correction
+
+Production build and lint passed. All seven existing Playwright tests passed against an isolated local libSQL database at /tmp/umbral-mobile-qa.db; hosted Turso could not be verified because credentials are absent. Existing application database code and records were left unchanged.
+
+Full-page screenshots at 1440, 768 and 390px and focused service screenshots were visually reviewed. Measurements at 390 and 639px confirmed one column, automatic placement for every visible child, full-width cards, 4:3 photos and consistent 16px spacing without empty cells or clipping. At 640px the existing two-column layout remains, and at 768 and 1440px the original three- and five-column service compositions remain. Category filters use two equal columns below 640px and retain keyboard and pressed-state behavior. Form labels, helper text, footer and metadata are at least 14px; body text remains 16px. Muted text contrast was increased. No horizontal overflow was found at any checked width.
+
+Screenshots: test-results/home-{1440,768,390}.png, test-results/services-{1440,768,390}.png and test-results/filters-390.png. Detailed computed layout evidence: /tmp/mobile-layout-verification.json.

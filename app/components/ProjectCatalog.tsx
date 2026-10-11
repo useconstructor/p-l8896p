@@ -150,7 +150,7 @@ export function ProjectCatalog({
             </p>
           </div>
           <div
-            className="mt-6 mb-7 border-b border-line flex flex-wrap gap-x-7 gap-y-1"
+            className="category-filters mt-6 mb-7 border-b border-line flex flex-wrap gap-x-7 gap-y-1"
             aria-label="Filtrar proyectos"
           >
             {categories.map((c) => (
@@ -220,7 +220,7 @@ export function ProjectCatalog({
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.035] group-focus-visible:scale-[1.035]"
                     />
                     <div className="absolute inset-3 border border-white/0 group-hover:border-white/50 group-focus-visible:border-white/50" />
-                    <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-xs tracking-[.1em] uppercase">
+                    <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-sm tracking-[.1em] uppercase">
                       Propuesta ficticia
                     </span>
                     <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/95">
@@ -231,7 +231,7 @@ export function ProjectCatalog({
                     <h3 className="editorial text-[25px] group-hover:text-accent group-focus-visible:text-accent">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-muted mt-1">{p.category}</p>
+                    <p className="text-sm text-muted mt-1">{p.category}</p>
                     <span className="flex items-center gap-3 text-sm text-accent mt-4">
                       Ver proyecto <ArrowRight size={14} />
                     </span>
@@ -241,7 +241,7 @@ export function ProjectCatalog({
             </div>
           )}
           <div className="mt-12 flex justify-between border-t border-line pt-4">
-            <p className="text-xs text-muted">
+            <p className="text-sm text-muted">
               Imágenes de referencia. Ninguna propuesta representa una obra
               construida.
             </p>
@@ -315,7 +315,7 @@ export function ProjectCatalog({
                       className="object-cover"
                     />
                   </div>
-                  <div className="flex items-center justify-between px-6 py-3 border-b border-line text-xs">
+                  <div className="flex items-center justify-between px-6 py-3 border-b border-line text-sm">
                     <button
                       onClick={() =>
                         setSlide(
@@ -362,7 +362,7 @@ export function ProjectCatalog({
                       </li>
                     ))}
                   </ul>
-                  <p className="text-xs text-muted leading-5 mt-7">
+                  <p className="text-sm text-muted leading-5 mt-7">
                     Las fotografías son referencias visuales y no documentan la
                     ejecución de esta propuesta.
                   </p>
