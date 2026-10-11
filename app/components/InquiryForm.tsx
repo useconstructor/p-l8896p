@@ -105,6 +105,7 @@ export function InquiryForm() {
               }
               maxLength={field === "name" ? 100 : 254}
               required
+              disabled={busy}
               aria-invalid={!!errors[field]}
               aria-describedby={errors[field] ? `${field}-error` : undefined}
               className="rounded-none border-0 border-b border-line bg-transparent shadow-none h-12 px-0 text-sm focus-visible:ring-0"
@@ -129,6 +130,7 @@ export function InquiryForm() {
           rows={4}
           maxLength={5000}
           required
+          disabled={busy}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : "message-hint"}
           className="rounded-none border-0 border-b border-line bg-transparent shadow-none px-0 resize-y text-sm focus-visible:ring-0 min-h-28"

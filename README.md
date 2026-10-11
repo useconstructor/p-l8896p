@@ -19,3 +19,9 @@ Photo sources:
 - Patio: https://images.unsplash.com/photo-1600607687920-4e2a09cf159d
 - Interior: https://images.unsplash.com/photo-1600210492486-724fe5c67fb0
 - Material reference: https://images.unsplash.com/photo-1600607687939-ce8a6c25118c
+
+## Reference design update
+
+Additional `editorial-*.jpg` images are photographic crops from the user-supplied design mockup:
+https://vabacntbfcwhgkjqajcw.supabase.co/storage/v1/object/public/screenshots/projects/P-L8896P/design-mockup.png
+They are explicitly displayed as visual references for fictional proposals. An additive `concept-gallery-v2` initialization marker inserts the fourth concept without changing stored projects or inquiries.

@@ -53,6 +53,20 @@ const seeds: Project[] = [
     materials: ["Madera natural", "Cerámica", "Tejidos de lino"],
     editorialOrder: 3,
   },
+  {
+    slug: "jardin-adentro",
+    title: "Jardín adentro",
+    category: "Vivienda unifamiliar",
+    description:
+      "Una propuesta ficticia que explora el jardín como una estancia más de la casa. Muros de piedra, sombra y aperturas enmarcan una vida cotidiana en contacto con el exterior. Las imágenes son referencias del concepto, no una obra construida.",
+    images: ["/media/editorial-garden.jpg", "/media/editorial-hero.jpg"],
+    alts: [
+      "Referencia de una casa de piedra con patio y vegetación",
+      "Referencia de un patio con un árbol y muros de hormigón",
+    ],
+    materials: ["Piedra natural", "Madera", "Estuco mineral"],
+    editorialOrder: 4,
+  },
 ];
 let initialized: Promise<void> | undefined;
 export function initialize() {
@@ -91,6 +105,28 @@ export function initialize() {
           });
         await tx.execute(
           "INSERT INTO initialization VALUES ('concept-projects-v1')",
+        );
+      }
+      const galleryMarker = await tx.execute(
+        "SELECT key FROM initialization WHERE key='concept-gallery-v2'",
+      );
+      if (!galleryMarker.rows.length) {
+        const p = seeds.find((project) => project.slug === "jardin-adentro")!;
+        await tx.execute({
+          sql: "INSERT OR IGNORE INTO projects VALUES (?,?,?,?,?,?,?,?)",
+          args: [
+            p.slug,
+            p.title,
+            p.category,
+            p.description,
+            JSON.stringify(p.images),
+            JSON.stringify(p.alts),
+            JSON.stringify(p.materials),
+            p.editorialOrder,
+          ],
+        });
+        await tx.execute(
+          "INSERT INTO initialization VALUES ('concept-gallery-v2')",
         );
       }
       await tx.execute(

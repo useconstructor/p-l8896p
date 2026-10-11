@@ -50,27 +50,14 @@ export function Navigation() {
         Saltar al contenido
       </a>
       <header className="sticky top-0 z-40 border-b border-line bg-background/95 backdrop-blur-md">
-        <div className="page-wrap flex h-[92px] items-center justify-between gap-6">
+        <div className="page-wrap flex h-[78px] items-center justify-between gap-6">
           <Link
             href="/"
             aria-label="Umbral Arquitectura, inicio"
             className="flex items-center gap-3"
           >
-            <svg
-              width="32"
-              height="42"
-              viewBox="0 0 32 42"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M2 40V2h28v38M9 40V10h14v30"
-                stroke="currentColor"
-                strokeWidth="1.3"
-              />
-            </svg>
             <span className="flex flex-col">
-              <span className="editorial text-[34px] leading-[.9]">umbral</span>
+              <span className="editorial text-[39px] leading-[.9]">Umbral</span>
               <span className="mt-1.5 text-[7px] tracking-[.29em] uppercase">
                 Arquitectura
               </span>
@@ -92,9 +79,9 @@ export function Navigation() {
           </nav>
           <a
             href="#consulta"
-            className="hidden md:flex min-h-11 items-center gap-6 border-b border-foreground pb-2 text-[11px]"
+            className="hidden md:flex min-h-11 items-center gap-6 bg-accent text-background px-5 text-[11px] hover:bg-foreground transition-colors"
           >
-            Consultar una idea
+            Hablemos
             <ArrowUpRight size={15} />
           </a>
           <button

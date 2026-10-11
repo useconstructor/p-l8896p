@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, MoveUpRight, Plus } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  MoveUpRight,
+  DraftingCompass,
+  Armchair,
+  Layers,
+} from "lucide-react";
 import { Navigation } from "./components/Navigation";
 import { ProjectCatalog } from "./components/ProjectCatalog";
 import { InquiryForm } from "./components/InquiryForm";
@@ -24,74 +31,59 @@ export default async function Home({
     <>
       <Navigation />
       <main id="contenido">
-        <section className="page-wrap pt-10 md:pt-14 pb-8">
-          <div className="grid md:grid-cols-[.93fr_1fr] gap-7 lg:gap-14">
-            <div className="flex flex-col justify-between py-3 md:pb-7">
-              <div>
-                <p className="eyebrow flex items-center gap-3 text-muted">
-                  <span className="h-[5px] w-[5px] rounded-full bg-accent" />
-                  Arquitectura residencial · Estudio conceptual
-                </p>
-                <h1 className="editorial text-[64px] sm:text-[80px] md:text-[60px] lg:text-[104px] leading-[.92] mt-10 lg:mt-14">
-                  Espacios para
-                  <br />
-                  <em className="text-accent">habitar.</em>
-                  <br />
-                  Tiempo para
-                  <br />
-                  vivir.
-                </h1>
-              </div>
-              <div className="mt-9 md:mt-12">
-                <p className="text-[12px] leading-[1.9] text-muted max-w-[300px]">
-                  Pensamos la arquitectura desde lo cotidiano.
-                  <br className="hidden lg:block" /> La luz que entra, la
-                  materia que se toca,
-                  <br className="hidden lg:block" /> el lugar al que siempre
-                  quieres volver.
-                </p>
-                <a href="#proyectos" className="arrow-link mt-6 min-w-[210px]">
-                  Explorar proyectos
-                  <ArrowUpRight size={17} />
-                </a>
-              </div>
+        <section className="hero-grid">
+          <div className="hero-copy">
+            <div className="architectural-mark" aria-hidden="true">
+              <span />
+              <span />
+              <span />
             </div>
-            <figure className="relative">
-              <div className="relative aspect-[.93] md:aspect-[.83] max-h-[670px] overflow-hidden bg-surface">
-                <Image
-                  src="/media/hero.jpg"
-                  alt="Referencia visual de una casa abierta al jardín, con madera, vegetación y luz natural"
-                  fill
-                  priority
-                  sizes="(max-width: 767px) 90vw, 50vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-5 border border-white/50 pointer-events-none" />
-                <span className="absolute top-8 left-8 bg-black/45 px-2 py-1 text-white text-[9px] tracking-[.15em] uppercase">
-                  El interior empieza afuera.
-                </span>
-                <span className="absolute bottom-8 right-8 text-white text-[9px] tracking-[.2em]">
-                  UMBRAL / 01
-                </span>
+            <p className="eyebrow section-label">Arquitectura residencial</p>
+            <h1 className="editorial hero-title">
+              Espacios que
+              <br />
+              marcan el
+              <br />
+              <em className="text-accent">umbral</em> de
+              <br />
+              lo cotidiano.
+            </h1>
+            <p className="hero-description">
+              Imaginamos casas que dialogan con su entorno,
+              <br className="hidden lg:block" /> para habitar con calma, luz y
+              propósito.
+            </p>
+            <a href="#proyectos" className="solid-link">
+              Ver proyectos <ArrowUpRight size={15} />
+            </a>
+            <div className="hero-caption">
+              <div>
+                <span className="eyebrow">Propuesta destacada</span>
+                <p className="editorial">Casa del patio</p>
               </div>
-              <figcaption className="flex justify-between gap-4 text-[9px] text-muted pt-4">
-                <span>Casa del patio · Exploración conceptual</span>
-                <span>Imagen de referencia</span>
-              </figcaption>
-            </figure>
+              <span>Concepto ficticio</span>
+            </div>
           </div>
-          <div className="mt-9 md:mt-12 flex justify-between items-center border-b border-line pb-6">
-            <span className="eyebrow text-muted text-[8px]">
-              Un umbral entre lo que imaginas y lo que habitas.
-            </span>
+          <figure className="hero-photo">
+            <Image
+              src="/media/editorial-hero.jpg"
+              alt="Referencia arquitectónica de un patio con un árbol, muros de hormigón y luz cálida"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 58vw"
+              className="object-cover"
+            />
+            <figcaption className="photo-label">
+              Imagen de referencia · Estudio ficticio
+            </figcaption>
             <a
               href="#proyectos"
+              className="hero-down"
               aria-label="Descubrir proyectos"
-              className="flex items-center justify-center h-11 w-11 border border-line rounded-full hover:text-accent"
             >
-              <ArrowDown size={17} />
+              <ArrowDown size={18} />
             </a>
-          </div>
+          </figure>
         </section>
         <ProjectCatalog
           initialProjects={projects}
@@ -99,145 +91,118 @@ export default async function Home({
           initialSlug={params.proyecto || ""}
           initialError={error}
         />
-        <section id="estudio" className="bg-surface py-20 md:py-24">
-          <div className="page-wrap grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div className="relative aspect-[1.05] bg-line">
-              <Image
-                src="/media/detail.jpg"
-                alt="Referencia visual de un interior donde la luz destaca los materiales naturales"
-                fill
-                sizes="(max-width: 767px) 90vw, 45vw"
-                className="object-cover"
-              />
-              <span className="absolute bottom-4 left-4 bg-background/95 px-3 py-2 eyebrow text-[8px]">
-                Materia, luz y silencio.
-              </span>
-            </div>
-            <div>
-              <p className="eyebrow text-accent mb-6">02 / El estudio</p>
-              <h2 className="editorial text-[50px] lg:text-[65px] leading-[.98]">
-                La arquitectura
-                <br />
-                empieza en
-                <br />
-                <em>cómo vivimos.</em>
-              </h2>
-              <p className="mt-7 text-[12px] leading-7 text-muted">
-                Umbral es un estudio ficticio de arquitectura residencial. Un
-                espacio de exploración para imaginar hogares atentos a las
-                personas, al entorno y a las pequeñas cosas de cada día.
-              </p>
-              <p className="mt-4 text-[12px] leading-7 text-muted">
-                Nos interesa lo esencial: una distribución que fluye, materiales
-                honestos y una relación sensible con la luz. Esta web presenta
-                conceptos, no obras construidas ni servicios profesionales
-                acreditados.
-              </p>
-              <div className="border-t border-line mt-7 pt-5 flex flex-wrap gap-x-8 gap-y-3">
-                <span className="eyebrow text-[8px]">Mirada conceptual</span>
-                <span className="eyebrow text-[8px]">Diseño espacial</span>
-                <span className="eyebrow text-[8px]">Materialidad</span>
-              </div>
-              <p className="text-[9px] mt-3 text-muted">
-                Áreas de trabajo del estudio ficticio, sin atribución a personas
-                reales.
-              </p>
-            </div>
+        <section id="estudio" className="studio-grid">
+          <figure className="studio-photo">
+            <Image
+              src="/media/editorial-studio.jpg"
+              alt="Referencia de un interior sereno con madera, un árbol y luz natural"
+              fill
+              sizes="(max-width: 767px) 100vw, 42vw"
+              className="object-cover"
+            />
+          </figure>
+          <div className="studio-copy">
+            <p className="eyebrow section-label">El estudio</p>
+            <h2 className="editorial">
+              Arquitectura con
+              <br />
+              <em>esencia y contexto.</em>
+            </h2>
+            <p>
+              Umbral Arquitectura es un estudio ficticio de arquitectura
+              residencial. Un espacio para imaginar hogares que conectan a las
+              personas con lo esencial: la luz, la naturaleza y el tiempo.
+            </p>
+            <p>
+              Entendemos cada propuesta como una conversación entre la forma de
+              vivir y el espacio. Las imágenes son referencias visuales; los
+              proyectos son conceptos, no obras construidas.
+            </p>
+            <a href="#proceso" className="outline-link">
+              Conoce nuestro enfoque <ArrowUpRight size={15} />
+            </a>
           </div>
         </section>
-        <section id="servicios" className="page-wrap py-20 md:py-24">
-          <div className="flex flex-col md:flex-row md:justify-between gap-6 mb-10">
-            <div>
-              <p className="eyebrow text-accent mb-5">03 / Qué imaginamos</p>
-              <h2 className="editorial text-[50px] md:text-[64px] leading-none">
-                De la idea <em>al espacio.</em>
+        <section id="servicios" className="page-wrap services-section">
+          <p className="eyebrow section-label">Servicios conceptuales</p>
+          <div className="services-bento">
+            <div className="services-intro">
+              <h2 className="editorial">
+                De la idea al espacio.
+                <br />
+                Cada detalle importa.
               </h2>
+              <p>Tres maneras de explorar un hogar, con un mismo cuidado.</p>
             </div>
-            <p className="max-w-[260px] text-xs text-muted leading-6 md:pt-9">
-              Tres maneras de explorar un hogar.
-              <br />
-              Un mismo cuidado por cada detalle.
-              <br />
-              Todos los alcances son conceptuales.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-[1.4fr_1fr] border border-line">
-            <a
-              href="#consulta"
-              className="group p-8 md:p-10 bg-surface md:row-span-2 flex flex-col justify-between min-h-[350px] md:min-h-[430px]"
-            >
-              <div className="flex justify-between">
-                <span className="eyebrow text-muted">
-                  01 / Proyecto residencial
-                </span>
-                <ArrowUpRight size={20} />
-              </div>
-              <div className="my-6 flex justify-center">
-                <svg
-                  width="190"
-                  height="120"
-                  viewBox="0 0 190 120"
-                  fill="none"
-                  aria-hidden="true"
-                  className="text-accent"
-                >
-                  <path
-                    d="M20 110V25h105v85H20Zm105 0h45V55h-45M45 110V50h55v60M45 80h55M75 50v60M10 25h125M20 15v105M170 45v75M10 110h170"
-                    stroke="currentColor"
-                    strokeWidth=".8"
-                  />
-                  <path
-                    d="M10 5h125M10 1v8m125-8v8M180 55v55m-4-55h8m-8 55h8"
-                    stroke="currentColor"
-                    strokeWidth=".5"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h3 className="editorial text-4xl group-hover:underline decoration-1 underline-offset-8">
-                  Imaginar desde el origen.
-                </h3>
-                <p className="text-xs text-muted leading-6 mt-3 max-w-[330px]">
-                  Conceptos de vivienda unifamiliar: relaciones espaciales, luz
-                  natural y vínculos con el exterior.
-                </p>
-              </div>
+            <a href="#consulta" className="service-tile service-main">
+              <DraftingCompass size={28} strokeWidth={1} />
+              <h3 className="editorial">Diseño arquitectónico</h3>
+              <p>
+                Imaginar desde el origen: relaciones espaciales, luz natural y
+                vínculos con el exterior.
+              </p>
+              <span>
+                Más información <ArrowUpRight size={14} />
+              </span>
             </a>
-            {[
-              {
-                number: "02",
-                label: "Reforma integral",
-                title: "Volver a mirar lo que existe.",
-                text: "Explorar nuevas distribuciones y posibilidades para transformar la manera de vivir un espacio.",
-              },
-              {
-                number: "03",
-                label: "Interiorismo",
-                title: "Lo que hace tuyo un lugar.",
-                text: "Propuestas de materiales, atmósferas y mobiliario que dan sentido a la escala doméstica.",
-              },
-            ].map((s) => (
-              <a
-                key={s.number}
-                href="#consulta"
-                className="group p-8 border-t md:border-t-0 md:border-l border-line last:border-t flex flex-col justify-between min-h-[215px]"
-              >
-                <div className="flex justify-between">
-                  <span className="eyebrow text-muted">
-                    {s.number} / {s.label}
-                  </span>
-                  <Plus size={18} />
-                </div>
-                <div>
-                  <h3 className="editorial text-[30px] group-hover:underline decoration-1 underline-offset-8">
-                    {s.title}
-                  </h3>
-                  <p className="text-xs text-muted leading-6 mt-3 max-w-[340px]">
-                    {s.text}
-                  </p>
-                </div>
-              </a>
-            ))}
+            <figure className="service-image service-image-four">
+              <Image
+                src="/media/editorial-garden.jpg"
+                alt="Referencia de un jardín residencial junto a una fachada de piedra"
+                fill
+                sizes="10vw"
+                className="object-cover"
+              />
+            </figure>
+            <figure className="service-image service-image-one">
+              <Image
+                src="/media/editorial-service.jpg"
+                alt="Referencia de un patio residencial con vegetación y luz natural"
+                fill
+                sizes="(max-width: 767px) 90vw, 32vw"
+                className="object-cover"
+              />
+            </figure>
+            <a href="#consulta" className="service-tile service-interiors">
+              <Armchair size={28} strokeWidth={1} />
+              <h3 className="editorial">Interiores</h3>
+              <p>
+                Materiales, atmósferas y mobiliario que dan sentido a la escala
+                doméstica.
+              </p>
+              <span>
+                Más información <ArrowUpRight size={14} />
+              </span>
+            </a>
+            <figure className="service-image service-image-two">
+              <Image
+                src="/media/editorial-patio.jpg"
+                alt="Referencia de un comedor abierto al exterior"
+                fill
+                sizes="(max-width: 767px) 45vw, 22vw"
+                className="object-cover"
+              />
+            </figure>
+            <a href="#consulta" className="service-tile service-reform">
+              <Layers size={28} strokeWidth={1} />
+              <h3 className="editorial">Reforma integral</h3>
+              <p>
+                Volver a mirar lo que existe. Explorar nuevas distribuciones y
+                maneras de vivir un espacio.
+              </p>
+              <span>
+                Más información <ArrowUpRight size={14} />
+              </span>
+            </a>
+            <figure className="service-image service-image-three">
+              <Image
+                src="/media/editorial-interior.jpg"
+                alt="Referencia de un salón con vigas de madera abierto al jardín"
+                fill
+                sizes="(max-width: 767px) 45vw, 32vw"
+                className="object-cover"
+              />
+            </figure>
           </div>
         </section>
         <section id="proceso" className="page-wrap pb-20 md:pb-24">

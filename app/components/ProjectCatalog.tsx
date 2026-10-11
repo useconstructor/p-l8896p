@@ -11,6 +11,11 @@ import {
   X,
 } from "lucide-react";
 import type { Project } from "@/lib/projects";
+const editorialImages: Record<string, string> = {
+  "casa-del-patio": "/media/editorial-patio.jpg",
+  "habitar-la-luz": "/media/editorial-exterior.jpg",
+  "materia-en-calma": "/media/editorial-interior.jpg",
+};
 const categories = [
   "Todos",
   "Vivienda unifamiliar",
@@ -44,6 +49,7 @@ export function ProjectCatalog({
   const categoryRef = useRef(initialCategory);
   const openedHere = useRef(false);
   const origin = useRef<HTMLElement | null>(null);
+  const inquiryDestination = useRef(false);
   const closeButton = useRef<HTMLButtonElement>(null);
   const selected = allProjects.find((p) => p.slug === slug);
   async function load(filter: string) {
@@ -122,115 +128,125 @@ export function ProjectCatalog({
   }
   return (
     <>
-      <section id="proyectos" className="page-wrap py-20 md:py-24">
-        <div className="flex justify-between gap-8 items-start">
-          <div>
-            <p className="eyebrow text-accent mb-4">
-              01 / Proyectos seleccionados
+      <section id="proyectos" className="catalog-section">
+        <div className="page-wrap">
+          <div className="flex justify-between gap-8 items-start">
+            <div>
+              <p className="eyebrow section-label mb-4">
+                Proyectos conceptuales
+              </p>
+              <h2 className="editorial text-[38px] md:text-[44px] leading-[1.05]">
+                Casas pensadas
+                <br />
+                para una vida real.
+              </h2>
+            </div>
+            <p className="hidden md:block text-[11px] text-muted leading-6 max-w-[230px] pt-8">
+              Una selección de propuestas ficticias.
+              <br />
+              Ideas que exploran la relación entre
+              <br />
+              el espacio, la materia y la vida.
             </p>
-            <h2 className="editorial text-[48px] md:text-[64px] leading-none">
-              Otras formas de <em>habitar.</em>
-            </h2>
           </div>
-          <p className="hidden md:block text-[11px] text-muted leading-6 max-w-[230px] pt-8">
-            Una selección de propuestas ficticias.
-            <br />
-            Ideas que exploran la relación entre
-            <br />
-            el espacio, la materia y la vida.
-          </p>
-        </div>
-        <div
-          className="mt-9 mb-10 border-b border-line flex flex-wrap gap-x-7 gap-y-1"
-          aria-label="Filtrar proyectos"
-        >
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => filter(c)}
-              aria-pressed={category === c}
-              className={`min-h-12 text-[11px] border-b -mb-px ${category === c ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"}`}
-            >
-              {c}
-              {category === c && (
-                <span className="sr-only">, filtro activo</span>
-              )}
-            </button>
-          ))}
-        </div>
-        <p className="sr-only" role="status" aria-live="polite">
-          {announcement}
-          {loading ? "Cargando proyectos." : ""}
-        </p>
-        {loading ? (
-          <div className="min-h-72 flex items-center justify-center gap-3 text-muted text-sm">
-            <LoaderCircle className="animate-spin" size={19} />
-            Cargando proyectos…
-          </div>
-        ) : error ? (
-          <div role="alert" className="py-14 border border-line text-center">
-            <p className="text-sm">
-              No se pueden cargar los proyectos en este momento.
-            </p>
-            <button className="arrow-link mt-3" onClick={() => load(category)}>
-              Volver a intentar
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        ) : !projects.length ? (
-          <div className="py-16 text-center">
-            <p className="editorial text-3xl">
-              Aún no hay propuestas en esta categoría.
-            </p>
-            <button onClick={() => filter("Todos")} className="arrow-link mt-4">
-              Ver todos los proyectos
-              <ArrowRight size={16} />
-            </button>
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-[1.25fr_1fr_1fr] gap-7 items-start">
-            {projects.map((p, i) => (
+          <div
+            className="mt-6 mb-7 border-b border-line flex flex-wrap gap-x-7 gap-y-1"
+            aria-label="Filtrar proyectos"
+          >
+            {categories.map((c) => (
               <button
-                key={p.slug}
-                onClick={(e) => open(p, e.currentTarget)}
-                className={`group text-left w-full ${i === 1 ? "md:mt-14" : i === 2 ? "md:mt-6" : ""}`}
-                aria-label={`Ver proyecto ${p.title}`}
+                key={c}
+                onClick={() => filter(c)}
+                aria-pressed={category === c}
+                className={`min-h-12 text-[11px] border-b -mb-px ${category === c ? "border-accent text-accent" : "border-transparent text-muted hover:text-foreground"}`}
               >
-                <div
-                  className={`relative overflow-hidden bg-surface ${i === 0 ? "aspect-[1.2]" : "aspect-[.95]"}`}
-                >
-                  <Image
-                    src={p.images[0]}
-                    alt={p.alts[0]}
-                    fill
-                    sizes="(max-width: 767px) 90vw, 35vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.035] group-focus-visible:scale-[1.035]"
-                  />
-                  <div className="absolute inset-3 border border-white/0 group-hover:border-white/50 group-focus-visible:border-white/50" />
-                  <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-[8px] tracking-[.1em] uppercase">
-                    Propuesta ficticia
-                  </span>
-                  <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/95">
-                    <ArrowUpRight size={16} />
-                  </span>
-                </div>
-                <div className="flex justify-between mt-5 text-[9px] uppercase tracking-[.12em] text-muted">
-                  <span>{p.category}</span>
-                  <span>0{p.editorialOrder}</span>
-                </div>
-                <h3 className="editorial text-[31px] mt-2 group-hover:underline group-focus-visible:underline decoration-1 underline-offset-8">
-                  {p.title}
-                </h3>
+                {c}
+                {category === c && (
+                  <span className="sr-only">, filtro activo</span>
+                )}
               </button>
             ))}
           </div>
-        )}
-        <div className="mt-12 flex justify-between border-t border-line pt-4">
-          <p className="text-[9px] text-muted">
-            Imágenes de referencia. Ninguna propuesta representa una obra
-            construida.
+          <p className="sr-only" role="status" aria-live="polite">
+            {announcement}
+            {loading ? "Cargando proyectos." : ""}
           </p>
-          <ArrowDown className="hidden sm:block text-accent" size={15} />
+          {loading ? (
+            <div className="min-h-72 flex items-center justify-center gap-3 text-muted text-sm">
+              <LoaderCircle className="animate-spin" size={19} />
+              Cargando proyectos…
+            </div>
+          ) : error ? (
+            <div role="alert" className="py-14 border border-line text-center">
+              <p className="text-sm">
+                No se pueden cargar los proyectos en este momento.
+              </p>
+              <button
+                className="arrow-link mt-3"
+                onClick={() => load(category)}
+              >
+                Volver a intentar
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          ) : !projects.length ? (
+            <div className="py-16 text-center">
+              <p className="editorial text-3xl">
+                Aún no hay propuestas en esta categoría.
+              </p>
+              <button
+                onClick={() => filter("Todos")}
+                className="arrow-link mt-4"
+              >
+                Ver todos los proyectos
+                <ArrowRight size={16} />
+              </button>
+            </div>
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
+              {projects.map((p) => (
+                <button
+                  key={p.slug}
+                  onClick={(e) => open(p, e.currentTarget)}
+                  className="group project-card text-left w-full border border-line bg-background"
+                  aria-label={`Ver proyecto ${p.title}`}
+                >
+                  <div className="relative overflow-hidden bg-surface aspect-square">
+                    <Image
+                      src={editorialImages[p.slug] || p.images[0]}
+                      alt={p.alts[0]}
+                      fill
+                      sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.035] group-focus-visible:scale-[1.035]"
+                    />
+                    <div className="absolute inset-3 border border-white/0 group-hover:border-white/50 group-focus-visible:border-white/50" />
+                    <span className="absolute bottom-3 left-3 bg-background/95 px-2 py-1 text-[8px] tracking-[.1em] uppercase">
+                      Propuesta ficticia
+                    </span>
+                    <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/95">
+                      <ArrowUpRight size={16} />
+                    </span>
+                  </div>
+                  <div className="project-copy">
+                    <h3 className="editorial text-[25px] group-hover:text-accent group-focus-visible:text-accent">
+                      {p.title}
+                    </h3>
+                    <p className="text-[10px] text-muted mt-1">{p.category}</p>
+                    <span className="flex items-center gap-3 text-[11px] text-accent mt-4">
+                      Ver proyecto <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+          <div className="mt-12 flex justify-between border-t border-line pt-4">
+            <p className="text-[9px] text-muted">
+              Imágenes de referencia. Ninguna propuesta representa una obra
+              construida.
+            </p>
+            <ArrowDown className="hidden sm:block text-accent" size={15} />
+          </div>
         </div>
       </section>
       <Dialog.Root
@@ -248,6 +264,21 @@ export function ProjectCatalog({
               closeButton.current?.focus();
             }}
             onCloseAutoFocus={(e) => {
+              if (inquiryDestination.current) {
+                e.preventDefault();
+                inquiryDestination.current = false;
+                document
+                  .getElementById("consulta")
+                  ?.scrollIntoView({
+                    behavior: window.matchMedia(
+                      "(prefers-reduced-motion: reduce)",
+                    ).matches
+                      ? "instant"
+                      : "smooth",
+                  });
+                document.getElementById("name")?.focus({ preventScroll: true });
+                return;
+              }
               if (origin.current) {
                 e.preventDefault();
                 origin.current.focus();
@@ -272,7 +303,12 @@ export function ProjectCatalog({
                 <div>
                   <div className="relative aspect-[4/5] bg-surface">
                     <Image
-                      src={selected.images[slide]}
+                      src={
+                        slide === 0
+                          ? editorialImages[selected.slug] ||
+                            selected.images[slide]
+                          : selected.images[slide]
+                      }
                       alt={selected.alts[slide]}
                       fill
                       sizes="(max-width: 767px) 90vw, 600px"
@@ -332,7 +368,17 @@ export function ProjectCatalog({
                   </p>
                   <a
                     href="#consulta"
-                    onClick={() => close()}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      inquiryDestination.current = true;
+                      openedHere.current = false;
+                      close();
+                      history.replaceState(
+                        null,
+                        "",
+                        new URL("#consulta", location.href),
+                      );
+                    }}
                     className="arrow-link text-accent mt-7 w-full"
                   >
                     Consultar una idea similar

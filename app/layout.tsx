@@ -15,7 +15,7 @@ export const metadata: Metadata = {
         ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
         : "http://localhost:3000"),
   ),
-  title: "Umbral Arquitectura · Espacios para habitar",
+  title: "Umbral Arquitectura · Espacios que marcan el umbral",
   description:
     "Estudio ficticio de arquitectura residencial. Proyectos conceptuales, materialidad y formas de habitar. Una demostración editorial.",
   openGraph: {

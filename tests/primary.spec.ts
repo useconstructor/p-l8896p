@@ -10,7 +10,7 @@ test("catalogue, URL, keyboard modal, errors and empty state", async ({
 }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Espacios para",
+    "Espacios que",
   );
   await page.getByRole("button", { name: "Interiores", exact: false }).click();
   await expect(page).toHaveURL(/categoria=Interiores/);
@@ -50,7 +50,7 @@ test("catalogue, URL, keyboard modal, errors and empty state", async ({
   await page.unroute("**/api/projects*");
   await page.getByRole("button", { name: "Volver a intentar" }).click();
   await expect(page.getByRole("button", { name: "Ver proyecto" })).toHaveCount(
-    3,
+    4,
   );
   await page.route("**/api/projects*", (route) =>
     route.fulfill({ status: 200, contentType: "application/json", body: "[]" }),
@@ -111,6 +111,16 @@ test("validation, failed submission retains values, successful exact persistence
     args: [email],
   });
 });
+test("project inquiry link reaches and focuses the form", async ({ page }) => {
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Ver proyecto Casa del patio", exact: true })
+    .click();
+  await page.getByRole("link", { name: "Consultar una idea similar" }).click();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page).toHaveURL(/#consulta$/);
+  await expect(page.getByLabel("Tu nombre")).toBeFocused();
+});
 for (const width of [1440, 768, 390])
   test(`responsive ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
@@ -121,6 +131,15 @@ for (const width of [1440, 768, 390])
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
+    await page.locator("#proyectos").scrollIntoViewIfNeeded();
+    await page.waitForFunction(() =>
+      Array.from(document.querySelectorAll("#proyectos img")).every(
+        (image) =>
+          (image as HTMLImageElement).complete &&
+          (image as HTMLImageElement).naturalWidth > 0,
+      ),
+    );
+    await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({
       path: `test-results/home-${width}.png`,
       fullPage: true,
